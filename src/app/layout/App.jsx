@@ -47,26 +47,24 @@ const Wrapper = styled.div`
   }
 
   .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 200px;
   }
-  @media (min-width: 768px) {
-    .container {
-      width: 750px;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      width: 970px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .container {
-      width: 1170px;
-    }
-  }
+
+  // @media (max-width: 768px) {
+  //   .container {
+  //     margin-left: 0px
+  //   }
+  // }
+  // @media (min-width: 992px) {
+  //   .container {
+  //     width: 970px;
+  //   }
+  // }
+  // @media (min-width: 1200px) {
+  //   .container {
+  //     width: 1170px;
+  //   }
+  // }
 `;
 
 //------ styles start ------//
@@ -83,6 +81,7 @@ function App({ location }) {
             <span className="route-section">
               <Switch location={location}>
                   <Route exact path="/" component={HomePage} />
+                  <Route exact path="/home" component={HomePage} />
                   <Route path="/profile" component={ProfilePage} />
                   <Route path="/projects" component={ProjectsPage} />
                   <Route path="/skills" component={SkillsPage} />
