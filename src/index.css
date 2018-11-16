@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,8 +9,21 @@ body {
     Helvetica, Arial, 'Lucida Grande', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: #1abc9c;   */
   background-color: #1c306d;
+
+  /*gradient */
+  /* background: #000428;
+  background: -webkit-linear-gradient(to right, #004e92, #000428);
+  background: linear-gradient(to right top, #004e92, #000428); */
+
+
+
+
+
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
 }
 
 code {
@@ -19,4 +36,3 @@ code {
   font-style: inherit;
   color: #fff;
 }
-
