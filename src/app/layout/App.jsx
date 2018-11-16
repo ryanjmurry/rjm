@@ -13,6 +13,8 @@ import styled from 'styled-components';
 
 library.add(fas, fab);
 
+//------ styles start ------//
+
 const Wrapper = styled.div`
   .fade-enter {
     opacity: 0.01;
@@ -66,6 +68,8 @@ const Wrapper = styled.div`
     }
   }
 `;
+
+//------ styles start ------//
 
 function App({ location }) {
   return (
