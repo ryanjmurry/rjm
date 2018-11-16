@@ -1,15 +1,15 @@
-import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import NavBar from '../../features/nav/NavBar/NavBar';
-import HomePage from '../../features/home/HomePage/HomePage';
-import ProfilePage from '../../features/profile/ProfilePage/ProfilePage';
-import ProjectsPage from '../../features/projects/ProjectsPage/ProjectsPage';
-import SkillsPage from '../../features/skills/SkillsPage/SkillsPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
+import HomePage from '../../features/home/HomePage/HomePage';
+import NavBar from '../../features/nav/NavBar/NavBar';
+import ProfilePage from '../../features/profile/ProfilePage/ProfilePage';
+import ProjectsPage from '../../features/projects/ProjectsPage/ProjectsPage';
+import SkillsPage from '../../features/skills/SkillsPage/SkillsPage';
 
 library.add(fas, fab);
 
