@@ -10,7 +10,9 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "react-transition-group": "^2.5.0",
+    "styled-components": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-onclickoutside": "^6.7.1"
+  }
 }
