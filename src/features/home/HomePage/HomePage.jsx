@@ -1,13 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 import Snow from './Snow';
 import Welcome from './Welcome';
 import WelcomeButtons from './WelcomeButtons';
-import styled from 'styled-components';
+
+//------ styles start ------//
 
 const HomePageContainer = styled.div`
   position: relative;
   top: 200px;
 `;
+
+//------ styles end ------//
 
 function HomePage() {
   return (
