@@ -3,27 +3,14 @@ import onClickOutside from 'react-onclickoutside';
 import BottomNavBar from './BottomNavBar';
 import SideNavBar from './SideNavBar';
 import MenuTrigger from './MenuTrigger';
-
-const topBarStyles = {
-  width: '100%',
-  position: 'fixed',
-  zIndex: '1',
-  top: '0px',
-  left: '80px',
-  backgroundColor: 'transparent',
-  overflowX: 'hidden',
-  transition: '0.5s',
-  webkitTransition: '0.5s',
-  display: 'flex',
-  alignItems: 'center'
-};
+import MobileNavBar from './MobileNavBar';
 
 class NavBar extends Component {
   state = {
     menuOpen: false,
     width: '0',
+    overlayWidth: '0',
     bottomMenuHeight: '0',
-    topMenuHeight: '0',
     scale: 'scale(0)',
     color: '#ffffff',
     screenWidth: 0,
@@ -52,6 +39,7 @@ class NavBar extends Component {
   openMenu = () => {
     this.setState({
       width: '185px',
+      overlayWidth: '100%',
       bottomMenuHeight: '50px',
       topMenuHeight: '100px',
       scale: 'scale(1)',
@@ -62,6 +50,7 @@ class NavBar extends Component {
   closeMenu = () => {
     this.setState({
       width: '0',
+      overlayWidth: '0',
       bottomMenuHeight: '0',
       topMenuHeight: '0',
       scale: 'scale(0)',
@@ -85,7 +74,15 @@ class NavBar extends Component {
   };
 
   render() {
-    const { width, topMenuHeight, color, menuOpen, activeIcon, bottomMenuHeight } = this.state;
+    const {
+      overlayWidth,
+      width,
+      color,
+      menuOpen,
+      activeIcon,
+      bottomMenuHeight,
+      screenWidth
+    } = this.state;
     return (
       <div>
         <MenuTrigger
@@ -93,21 +90,27 @@ class NavBar extends Component {
           handleCloseMenu={this.closeMenu}
           handleOpenMenu={this.openMenu}
         />
-        <SideNavBar
-          handleIconActivate={this.iconActivate}
-          handleIconDeactive={this.iconDeactivate}
-          handleCloseMenu={this.closeMenu}
-          color={color}
-          width={width}
-          activeIcon={activeIcon}
-        />
-        <BottomNavBar
-          handleIconActivate={this.iconActivate}
-          handleIconDeactive={this.iconDeactivate}
-          color={color}
-          bottomMenuHeight={bottomMenuHeight}
-          activeIcon={activeIcon}
-        />
+        {screenWidth < 768 ? (
+          <MobileNavBar handleCloseMenu={this.closeMenu} overlayWidth={overlayWidth} />
+        ) : (
+          <div>
+            <SideNavBar
+              handleIconActivate={this.iconActivate}
+              handleIconDeactivate={this.iconDeactivate}
+              handleCloseMenu={this.closeMenu}
+              color={color}
+              width={width}
+              activeIcon={activeIcon}
+            />
+            <BottomNavBar
+              handleIconActivate={this.iconActivate}
+              handleIconDeactive={this.iconDeactivate}
+              color={color}
+              bottomMenuHeight={bottomMenuHeight}
+              activeIcon={activeIcon}
+            />
+          </div>
+        )}
       </div>
     );
   }
