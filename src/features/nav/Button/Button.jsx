@@ -92,12 +92,12 @@ const Wrapper = styled.div`
 const Button = ({buttonText}) => {
   return (
     <Wrapper>
-      <div class="button">
+      <div className="button">
         <svg width="100%" height="100%">
-          <line class="top" x1="0" y1="0" x2="600" y2="0" />
-          <line class="left" x1="0" y1="50" x2="0" y2="-100" />
-          <line class="bottom" x1="200" y1="50" x2="-400" y2="50" />
-          <line class="right" x1="200" y1="0" x2="200" y2="150" />
+          <line className="top" x1="0" y1="0" x2="600" y2="0" />
+          <line className="left" x1="0" y1="50" x2="0" y2="-100" />
+          <line className="bottom" x1="200" y1="50" x2="-400" y2="50" />
+          <line className="right" x1="200" y1="0" x2="200" y2="150" />
         </svg>
         <h3>{buttonText}</h3>
       </div>
