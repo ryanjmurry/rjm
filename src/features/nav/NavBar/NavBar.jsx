@@ -2,7 +2,39 @@ import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-// import { objectToArray } from '../../../app/helpers/helpers';
+import styled from 'styled-components';
+
+// const SideBar = styled.div`
+//   height: 100%;
+//   width: 0;
+//   position: fixed;
+//   z-index: 1;
+//   top: 80px;
+//   left: 0;
+//   background-color: transparent;
+//   overflow-x: hidden;
+//   transition: 0.5s;
+// `;
+
+// const TopBar = styled.div`
+//   width: 100%;
+//   position: fixed;
+//   z-index: 1;
+//   top: 0px;
+//   left: 80px;
+//   background-color: transparent;
+//   overflow-x: hidden;
+//   transition: 0.5s;
+//   -webkit-transition: 0.5s;
+//   display: flex;
+//   align-items: center;
+
+//   // li {
+//   //   display: inline-block;
+//   //   margin-left: 40px;
+//   //   margin-top: 6px;
+//   // }
+// `;
 
 const sideBarStyles = {
   height: '100%',
@@ -13,7 +45,8 @@ const sideBarStyles = {
   left: '0',
   backgroundColor: 'transparent',
   overflowX: 'hidden',
-  transition: '0.5s' 
+  transition: '0.5s',
+  webkitTransition: '0.5s'
 };
 
 const bottomBarStyles = {
@@ -25,6 +58,26 @@ const bottomBarStyles = {
   backgroundColor: 'transparent',
   textAlign: 'right',
   transition: '0.5s'
+};
+
+const topBarStyles = {
+  width: '100%',
+  position: 'fixed',
+  zIndex: '1',
+  top: '0px',
+  left: '80px',
+  backgroundColor: 'transparent',
+  overflowX: 'hidden',
+  transition: '0.5s',
+  webkitTransition: '0.5s',
+  display: 'flex',
+  alignItems: 'center'
+};
+
+const liStyles = {
+  display: 'inline-block',
+  marginLeft: '40px',
+  marginTop: '25px'
 };
 
 const menuListStyles = {
@@ -88,9 +141,26 @@ class NavBar extends Component {
   state = {
     menuOpen: false,
     width: '0',
-    height: '0',
+    bottomMenuHeight: '0',
+    topMenuHeight: '0',
     scale: 'scale(0)',
-    color: '#ffffff'
+    color: '#ffffff',
+    screenWidth: 0
+  };
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({
+      screenWidth: window.innerWidth
+    });
   };
 
   handleClickOutside = evt => {
@@ -100,7 +170,8 @@ class NavBar extends Component {
   openMenu = () => {
     this.setState({
       width: '125px',
-      height: '50px',
+      bottomMenuHeight: '50px',
+      topMenuHeight: '100px',
       scale: 'scale(1)',
       menuOpen: true
     });
@@ -109,7 +180,8 @@ class NavBar extends Component {
   closeMenu = () => {
     this.setState({
       width: '0',
-      height: '0',
+      bottomMenuHeight: '0',
+      topMenuHeight: '0',
       scale: 'scale(0)',
       menuOpen: false,
       activeIcon: ''
@@ -131,7 +203,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const { width, height, color, menuOpen, activeIcon } = this.state;
+    const { width, topMenuHeight, color, menuOpen, activeIcon, bottomMenuHeight } = this.state;
     return (
       <div>
         <div>
@@ -150,19 +222,28 @@ class NavBar extends Component {
         </div>
 
         {/* Side NavBar */}
-        <div style={{ ...sideBarStyles, width: width }}>
-          <span />
+        {/* <d style={{ width: width }}> */}
+        <div
+          style={
+            this.state.screenWidth > 768
+              ? { ...sideBarStyles, width: width }
+              : { ...topBarStyles, height: topMenuHeight }
+          }
+        >
           <ul style={menuListStyles}>
             {Object.keys(navigationalMenuItems).map(key => (
               <Link
-                id={key}
+                key={key}
                 to={`/${navigationalMenuItems[key].displayName}`}
                 style={{ textDecoration: 'none' }}
                 onClick={this.closeMenu}
               >
-                <li>
+                <li style={liStyles}>
                   <FontAwesomeIcon
-                    onMouseEnter={this.iconActivate(navigationalMenuItems[key].iconName, navigationalMenuItems[key].color)}
+                    onMouseEnter={this.iconActivate(
+                      navigationalMenuItems[key].iconName,
+                      navigationalMenuItems[key].color
+                    )}
                     onMouseLeave={this.iconDeactivate}
                     icon={navigationalMenuItems[key].iconName}
                     style={{
@@ -174,9 +255,7 @@ class NavBar extends Component {
                   <div
                     style={{
                       color:
-                        activeIcon === navigationalMenuItems[key].iconName
-                          ? color
-                          : 'transparent',
+                        activeIcon === navigationalMenuItems[key].iconName ? color : 'transparent',
                       marginBottom: '20px',
                       transition: '1s'
                     }}
@@ -190,21 +269,24 @@ class NavBar extends Component {
         </div>
 
         {/* Bottom NavBar */}
-        <div style={{ ...bottomBarStyles, height: height }}>
+        <div style={{ ...bottomBarStyles, height: bottomMenuHeight }}>
           {Object.keys(socialMenuItems).map(key => (
-            <span style={{marginRight: '50px'}}>
-            <a href={socialMenuItems[key].link} style={{ textDecoration: 'none' }}>
-              <FontAwesomeIcon
-                onMouseEnter={this.iconActivate(socialMenuItems[key].iconName, socialMenuItems[key].color)}
-                onMouseLeave={this.iconDeactivate}
-                icon={socialMenuItems[key].iconName}
-                style={{
-                  fontSize: '2em',
-                  cursor: 'pointer',
-                  color: activeIcon === socialMenuItems[key].iconName ? color : '#ffffff'
-                }}
-              />
-            </a>
+            <span key={key} style={{ marginRight: '50px' }}>
+              <a href={socialMenuItems[key].link} style={{ textDecoration: 'none' }}>
+                <FontAwesomeIcon
+                  onMouseEnter={this.iconActivate(
+                    socialMenuItems[key].iconName,
+                    socialMenuItems[key].color
+                  )}
+                  onMouseLeave={this.iconDeactivate}
+                  icon={socialMenuItems[key].iconName}
+                  style={{
+                    fontSize: '2em',
+                    cursor: 'pointer',
+                    color: activeIcon === socialMenuItems[key].iconName ? color : '#ffffff'
+                  }}
+                />
+              </a>
             </span>
           ))}
           ;
