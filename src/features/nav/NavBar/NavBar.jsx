@@ -87,6 +87,7 @@ class NavBar extends Component {
       <div>
         <MenuTrigger
           menuOpen={menuOpen}
+          screenWidth={screenWidth}
           handleCloseMenu={this.closeMenu}
           handleOpenMenu={this.openMenu}
         />
