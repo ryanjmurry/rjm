@@ -59,6 +59,7 @@ const IconCircles = styled.div`
   align-items: center;
   border-radius: 50%;
   background-color: transparent;
+
 `;
 
 const IconText = styled.div`
@@ -66,9 +67,10 @@ const IconText = styled.div`
   margin-bottom: 20px;
   transition: 1s;
   text-transform: uppercase;
-  align-text: center;
-  font-size: 0.8em;
+  text-align: center;
+  font-size: 0.9em;
   margin-top: 10px;
+  font-family: 'Laila', serif;
 `;
 
 const iconStyles = {
