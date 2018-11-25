@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     transition: background 0.4s 0.5s;
   }
 
-  .button h3 {
+  .button p {
     font-size: 1em;
     text-align: center;
     text-transform: uppercase;
@@ -25,12 +25,12 @@ const Wrapper = styled.div`
     font-weight: 500;
   }
 
-  .button h3 {
+  .button p {
     -webkit-transition: color 0.4s 0.5s;
     transition: color 0.4s 0.5s;
   }
 
-  .button:hover h3 {
+  .button:hover p {
     color: #ffb75c;
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
@@ -40,6 +40,7 @@ const Wrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
+    shape-rendering: crispedges;
   }
 
   .button svg line {
@@ -99,7 +100,7 @@ const Button = ({buttonText}) => {
           <line className="bottom" x1="200" y1="50" x2="-400" y2="50" />
           <line className="right" x1="200" y1="0" x2="200" y2="150" />
         </svg>
-        <h3>{buttonText}</h3>
+        <p>{buttonText}</p>
       </div>
     </Wrapper>
   );
