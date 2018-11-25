@@ -11,6 +11,8 @@ const MainMenu = styled.div`
   align-items: center;
   text-align: center;
   text-transform: uppercase;
+  font-family: 'Laila', serif;
+  font-weight: 300;
   top: auto;
   padding-top: 25px;
   font-size: 1em;
