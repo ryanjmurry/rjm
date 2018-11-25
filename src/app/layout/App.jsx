@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
@@ -50,48 +50,61 @@ const Wrapper = styled.div`
     margin-left: 200px;
   }
 
-  // @media (max-width: 768px) {
-  //   .container {
-  //     margin-left: 0px
-  //   }
-  // }
-  // @media (min-width: 992px) {
-  //   .container {
-  //     width: 970px;
-  //   }
-  // }
-  // @media (min-width: 1200px) {
-  //   .container {
-  //     width: 1170px;
-  //   }
-  // }
+  @media (max-width: 768px) {
+    .container {
+      margin-left: 0px;
+    }
+  }
 `;
 
 //------ styles start ------//
 
-function App({ location }) {
-  return (
-    <Wrapper>
-      <div>
-        <NavBar />
-      </div>
-      <div className="container">
-        <TransitionGroup className="transition-group">
-          <CSSTransition key={location.key} classNames="fade" timeout={500}>
-            <span className="route-section">
-              <Switch location={location}>
-                  <Route exact path="/" component={HomePage} />
-                  <Route exact path="/home" component={HomePage} />
+class App extends Component {
+  state = {
+    screenWidth: 0
+  };
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({
+      screenWidth: window.innerWidth
+    });
+  };
+
+  render() {
+    const { location } = this.props;
+    const { screenWidth } = this.state;
+    return (
+      <Wrapper>
+        <div>
+          <NavBar screenWidth={screenWidth} />
+        </div>
+        <div className="container">
+          <TransitionGroup className="transition-group">
+            <CSSTransition key={location.key} classNames="fade" timeout={500}>
+              <span className="route-section">
+                <Switch location={location}>
+                  <Route exact path="/home" render={() => <HomePage screenWidth={screenWidth} />} />
+                  <Route exact path="/" render={() => <HomePage screenWidth={screenWidth} />} />
                   <Route path="/profile" component={ProfilePage} />
                   <Route path="/projects" component={ProjectsPage} />
                   <Route path="/skills" component={SkillsPage} />
-              </Switch>
-            </span>
-          </CSSTransition>
-        </TransitionGroup>
-      </div>
-    </Wrapper>
-  );
+                </Switch>
+              </span>
+            </CSSTransition>
+          </TransitionGroup>
+        </div>
+      </Wrapper>
+    );
+  }
 }
 
 export default withRouter(App);
