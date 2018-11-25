@@ -9,7 +9,7 @@ const bottomBarStyles = {
   zIndex: '1',
   bottom: '0',
   left: '0',
-  backgroundColor: 'transparent',
+  backgroundColor: '#1c306d',
   textAlign: 'right',
   transition: '0.5s',
 };
