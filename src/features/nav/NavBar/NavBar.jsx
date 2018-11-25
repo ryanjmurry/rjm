@@ -4,6 +4,7 @@ import BottomNavBar from './BottomNavBar';
 import SideNavBar from './SideNavBar';
 import MenuTrigger from './MenuTrigger';
 import MobileNavBar from './MobileNavBar';
+import PropTypes from 'prop-types';
 
 class NavBar extends Component {
   state = {
@@ -13,23 +14,7 @@ class NavBar extends Component {
     bottomMenuHeight: '0',
     scale: 'scale(0)',
     color: '#ffffff',
-    screenWidth: 0,
     activeIcon: ''
-  };
-
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions = () => {
-    this.setState({
-      screenWidth: window.innerWidth
-    });
   };
 
   handleClickOutside = evt => {
@@ -74,15 +59,8 @@ class NavBar extends Component {
   };
 
   render() {
-    const {
-      overlayWidth,
-      width,
-      color,
-      menuOpen,
-      activeIcon,
-      bottomMenuHeight,
-      screenWidth
-    } = this.state;
+    const { screenWidth } = this.props;
+    const { overlayWidth, width, color, menuOpen, activeIcon, bottomMenuHeight } = this.state;
     return (
       <div>
         <MenuTrigger
@@ -116,5 +94,9 @@ class NavBar extends Component {
     );
   }
 }
+
+NavBar.propTypes = {
+  screenWidth: PropTypes.string.isRequired
+};
 
 export default onClickOutside(NavBar);
