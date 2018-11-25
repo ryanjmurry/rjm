@@ -1,45 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 //------ styles start ------//
 
 const Wrapper = styled.div`
-  margin-left: 10px;
+h1 {
+  line-height: 1;
+  margin-bottom: -30px;
+}
 
-  h1 {
-    font-weight: 300;
-    font-size: 3em;
-    line-height: 70px;
-    letter-spacing: 0;
-    color: #ffffff;
-  }
+h3 {
+  display: flex;
+  align-items : center;
+}
 
-  h3 {
-    color: #fff;
-    line-height: 30px;
-    font-size: 1.3em;
-    opacity: 0.7;
-    width: 535px;
-    font-weight: 400;
-    margin-top: -25px;
-  }
+
 `;
 
 //------ styles end ------//
 
-function Welcome() {
+const Welcome = ({ screenWidth }) => {
   return (
     <Wrapper>
-      <h1>
-        Ryan Murry <br />
-        Full-Stack Web Developer
-      </h1>
-      <h3>
-        Hi. I'm a former educator, smartphone photographer, and aspiring web developer based out of
-        Portland, OR.
+      <h1>Ryan Murry</h1>
+
+      {screenWidth > 560 && (
+       <h3>
+       Software Developer
+       <FontAwesomeIcon icon="circle" style={{fontSize: '0.25em', margin: '0px 20px'}}/>
+       Educator
+     </h3>
+      )}
+      {screenWidth < 560 && (
+        <h3>
+        Software Developer <br />
+        Educator
       </h3>
+      )}
     </Wrapper>
   );
-}
+};
 
 export default Welcome;
