@@ -57,7 +57,7 @@ export const projects = {
       hosted: true,
       url: 'http://whats-on-tap-app.herokuapp.com/'
     },
-    technologies: ['C#', 'ASP.NET Core', 'Entity Framework', 'MySQL', 'Google Maps API'],
+    technologies: ['C#', 'ASP.NET Core', 'Entity Framework'],
     teamMembers: {
       abel: {
         name: 'Abel Trotter',
@@ -111,7 +111,7 @@ export const projects = {
       hosted: true,
       url: 'http://beverage-maker.herokuapp.com/'
     },
-    technologies: ['JavaScript', 'Webpack', 'The Cocktail Database'],
+    technologies: ['JavaScript', 'Webpack'],
     teamMembers: {
       reese: {
         name: 'Reese Glasscock',
@@ -133,7 +133,7 @@ export const projects = {
   taproom: {
     displayName: 'Just Tap It',
     team: false,
-    github: 'https://github.com/ryanjmurry/taproom-revamp',
+    gitHub: 'https://github.com/ryanjmurry/taproom-revamp',
     liveSite: {
       hosted: false,
       url: ''
