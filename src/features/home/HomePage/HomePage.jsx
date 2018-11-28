@@ -25,15 +25,14 @@ const HomePageContainer = styled.div`
     text-align: center;
     top: 100px;
     }
-  }
-`;
+    `;
 
 //------ styles end ------//
 
 const HomePage = ({screenWidth}) => {
   return (
     <div>
-      <Snow />
+      {/* <Snow /> */}
       <HomePageContainer>
         <Welcome screenWidth={screenWidth}/>
         <WelcomeButtons screenWidth={screenWidth}/>
