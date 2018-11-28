@@ -3,13 +3,10 @@ import React from 'react';
 function ProfilePage() {
   return (
     <div>
-      <h1 className="page-header">Profile Page Works!</h1>
+      <h1>Profile</h1>
       <div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet mi nunc.
-          Vestibulum egestas, mi sit amet placerat finibus, erat augue sagittis leo, iaculis pretium
-          quam mi sed nulla. Mauris vestibulum cursus semper. Phasellus vitae varius tortor, non
-          ornare justo.
+          Hi. I'm a software developer and former high school chemistry teacher currently living in Portland, OR. 
         </p>
         <p>
           Nullam sit amet scelerisque elit, vitae consequat dui. Donec efficitur, ex mattis
