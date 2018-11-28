@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import onClickOutside from 'react-onclickoutside';
 
 const ProjectBox = styled.div`
-  border: 1px solid #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
   width: 100%;
-  position: absolute;
+  position: relative;
   left: 0;
   transition: 0.5s;
 `;
@@ -14,15 +14,19 @@ const ProjectBox = styled.div`
 const InactiveBox = styled.div`
   display: flex;
   align-items: center;
-  height: 106px;
-  justify-content: space-around;
+  height: 110px;
+  justify-content: space-evenly;
   color: #fff;
   transition: 0.5s;
+  margin: 0px 10px;
 `;
 
 const ProjectSection = styled.div`
   display: flex;
   flex-direction: column;
+  width: 155px;
+  font-family: 'Laila', serif;
+  font-weight: 600;
 `;
 
 const TechnologySection = styled.div`
@@ -30,9 +34,11 @@ const TechnologySection = styled.div`
   flex-wrap: wrap;
   width: 200px;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 
   span {
-    margin-left: 10px;
+    margin-right: 10px;
   }
 `;
 
@@ -40,9 +46,17 @@ const ActiveBox = styled.div`
   display: flex;
   justify-content: space-around;
   transition: 0.5s;
+  height: 110px;
 
   h3 {
     color: #1c306d;
+    font-weight: 400;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #1c306d;
+    font-weight: 400;
   }
 `;
 
@@ -72,28 +86,34 @@ class Project extends Component {
 
   render() {
     const { boxBackgroundColor, projectActive } = this.state;
+    const { projectName, technologies, teamProject, hosted, gitHubUrl, liveSiteUrl } = this.props;
     return (
       <ProjectBox onClick={this.projectClick} style={{ backgroundColor: boxBackgroundColor }}>
         {!projectActive && (
           <InactiveBox>
             <ProjectSection>
-              <span>ProjectName</span>
+              <span>{projectName}</span>
             </ProjectSection>
             <TechnologySection>
-              <span>Tech 1</span>
-              <span>Tech 2</span>
-              <span>Tech 3</span>
-              <span>Tech 4</span>
-              <span>Tech 5</span>
+              {technologies.map((tech, index) => (
+                <span key={index}>{tech}</span>
+              ))}
             </TechnologySection>
             <FontAwesomeIcon icon="chevron-right" />
           </InactiveBox>
         )}
         {projectActive && (
           <ActiveBox>
-            <h3>
-              GitHub <span style={{ margin: '0px 10px' }}>|</span> Live Site
-            </h3>
+            {hosted ? (
+              <h3>
+                <a href={gitHubUrl}>GitHub</a>
+                <span style={{ margin: '0px 10px' }}>|</span> <a href={liveSiteUrl}>Live Site</a>
+              </h3>
+            ) : (
+              <h3>
+                <a href={gitHubUrl}>GitHub</a>
+              </h3>
+            )}
           </ActiveBox>
         )}
       </ProjectBox>
