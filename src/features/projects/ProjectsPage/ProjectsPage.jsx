@@ -7,21 +7,23 @@ import Button from '../../nav/Button/Button';
 
 const Wrapper = styled.div`
   h1 {
-    margin: 40px 0 0 0;
     font-size: 3.5em;
     padding-left: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   }
 
   .page-button {
-    margin: 40px 0px 40px 35px;
+    margin: 40px 0px 50px 35px;
   }
 `;
 
 function ProjectsPage({ screenWidth }) {
+  const mobileHeader = <h1 style={{margin: '40px 0 0 0'}}>Projects</h1>
+  const desktopHeader = <h1 style={{padding: '80px 0 0', marginLeft: '-40px', marginBottom: '0px',width: '75vw'}}>Projects</h1>
   return (
     <Wrapper>
-      <h1>Projects</h1>
+      {/* <h1 style={{margin: screenWidth > 768 ? '110px 0 0 0 ': '40px 0 0 0'}}><span>Projects</span></h1> */}
+      {screenWidth > 768 ? desktopHeader : mobileHeader}
       {Object.keys(projects).map(key => (
         <Project
           key={key}
