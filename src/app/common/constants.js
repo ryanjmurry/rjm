@@ -51,13 +51,14 @@ export const socialMenuItems = {
 export const projects = {
   whatsOnTap: {
     displayName: "What's On Tap",
+    description: 'Find and save your favorite beers on tap!',
     team: true,
     gitHub: 'https://github.com/ryanjmurry/whats-on-tap',
     liveSite: {
       hosted: true,
       url: 'http://whats-on-tap-app.herokuapp.com/'
     },
-    technologies: ['C#', 'ASP.NET Core', 'Entity Framework'],
+    technologies: ['.NET Core', 'C#', 'Entity Framework'],
     teamMembers: {
       abel: {
         name: 'Abel Trotter',
@@ -78,13 +79,14 @@ export const projects = {
   },
   citrusCiderHouse: {
     displayName: 'Citrus Cider House',
+    description: 'A CMS built for a ficticious cider company.',
     team: true,
     gitHub: 'https://github.com/ryanjmurry/citrus-cider-house',
-    liveSite: { 
-      hosted: true, 
-      url: 'https://angular-team-week.firebaseapp.com/' 
+    liveSite: {
+      hosted: true,
+      url: 'https://angular-team-week.firebaseapp.com/'
     },
-    technologies: ['TypeScript', 'Angular', 'Firebase'],
+    technologies: ['Angular', 'TypeScript', 'Firebase'],
     teamMembers: {
       reese: {
         name: 'Reese Glasscock',
@@ -105,6 +107,7 @@ export const projects = {
   },
   cocktailFinder: {
     displayName: 'Cocktail Finder',
+    description: 'Find your perfect cocktail!',
     team: true,
     gitHub: 'https://github.com/ryanjmurry/cocktail-finder',
     liveSite: {
@@ -122,22 +125,24 @@ export const projects = {
   },
   aha: {
     displayName: 'Aha!',
+    description: 'A site for students and tutors to connect.',
     team: false,
     gitHub: 'https://github.com/ryanjmurry/aha',
     liveSite: {
       hosted: false,
-      url: '',
+      url: ''
     },
-    technologies: ['C#', 'ASP.NET Core', 'MySQL']
+    technologies: ['.NET Core', 'C#', 'MySQL']
   },
   taproom: {
     displayName: 'Just Tap It',
+    description: 'A dynamic taplist with admin functionality.',
     team: false,
     gitHub: 'https://github.com/ryanjmurry/taproom-revamp',
     liveSite: {
       hosted: false,
       url: ''
     },
-    technologies: ['React', 'JSX', 'Node.js' ]
+    technologies: ['React', 'JSX', 'Node.js']
   }
 };
