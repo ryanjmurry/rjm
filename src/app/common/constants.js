@@ -125,7 +125,7 @@ export const projects = {
   },
   aha: {
     displayName: 'Aha!',
-    description: 'A site for students and tutors to connect.',
+    description: 'A way for students and tutors to connect.',
     team: false,
     gitHub: 'https://github.com/ryanjmurry/aha',
     liveSite: {
