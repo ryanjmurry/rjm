@@ -95,7 +95,7 @@ class App extends Component {
                   <Route exact path="/home" render={() => <HomePage screenWidth={screenWidth} />} />
                   <Route exact path="/" render={() => <HomePage screenWidth={screenWidth} />} />
                   <Route path="/profile" component={ProfilePage} />
-                  <Route path="/projects" component={ProjectsPage} />
+                  <Route path="/projects" render={() => <ProjectsPage screenWidth={screenWidth} />} />
                   <Route path="/skills" component={SkillsPage} />
                 </Switch>
               </span>
