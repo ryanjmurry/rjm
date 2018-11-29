@@ -84,7 +84,7 @@ class App extends Component {
     const { screenWidth } = this.state;
     return (
       <Wrapper>
-        <div>
+        <div style={{position: screenWidth > 768 ? 'fixed' : '', zIndex: '100'}}>
           <NavBar screenWidth={screenWidth} />
         </div>
         <div className="container">
