@@ -9,6 +9,11 @@ const ProjectBox = styled.div`
   position: relative;
   left: 0;
   transition: 0.5s;
+
+  @media (min-width: 768px) {
+    width: 75vw;
+    margin-left: -40px;
+  }
 `;
 
 const InactiveBox = styled.div`
@@ -24,7 +29,7 @@ const ProjectSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 200px;
-  font-family: 'Laila', serif;
+  font-family: 'Khula', sans-serif;
   font-weight: 600;
   font-size: 1.2em;
 `;
@@ -41,6 +46,10 @@ const TechnologySection = styled.div`
 
   span {
     margin-right: 10px;
+  }
+
+  @media(min-width: 768px) {
+    width: 300px;
   }
 `;
 
@@ -122,6 +131,7 @@ class Project extends Component {
       ) : (
         technologies.map((tech, index) => <span key={index}>{tech}</span>)
       );
+    
 
     return (
       <ProjectBox onClick={this.projectClick} style={{ backgroundColor: boxBackgroundColor }}>
