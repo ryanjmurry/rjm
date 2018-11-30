@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Project from './Project';
 import { projects } from '../../../app/common/constants';
-import Button from '../../nav/Button/Button';
+import ProjectButtons from '../ProjectsPage/ProjectButtons';
 
 const Wrapper = styled.div`
   h1 {
@@ -13,13 +13,29 @@ const Wrapper = styled.div`
   }
 
   .page-button {
-    margin: 40px 0px 50px 35px;
+    margin: 40px 0px 50px -50px;
+  }
+
+  @media (max-width: 768px) {
+    .page-button {
+      margin: 40px 0px 50px 35px;
+    }
+  }
+
+  @media (max-width: 495px) {
+    .page-button {
+      margin: 40px 0px 50px 0px;
+    }
   }
 `;
 
-function ProjectsPage({ screenWidth }) {
-  const mobileHeader = <h1 style={{margin: '40px 0 0 0'}}>Projects</h1>
-  const desktopHeader = <h1 style={{padding: '80px 0 0', marginLeft: '-40px', marginBottom: '0px',width: '75vw'}}>Projects</h1>
+const ProjectsPage = ({ screenWidth }) => {
+  const mobileHeader = <h1 style={{ margin: '40px 0 0 0' }}>Projects</h1>;
+  const desktopHeader = (
+    <h1 style={{ padding: '80px 0 0', marginLeft: '-40px', marginBottom: '0px', width: '75vw' }}>
+      Projects
+    </h1>
+  );
   return (
     <Wrapper>
       {/* <h1 style={{margin: screenWidth > 768 ? '110px 0 0 0 ': '40px 0 0 0'}}><span>Projects</span></h1> */}
@@ -37,11 +53,11 @@ function ProjectsPage({ screenWidth }) {
           screenWidth={screenWidth}
         />
       ))}
-      <div className='page-button'>
-        <Button buttonText="explore my skills" />
+      <div className="page-button">
+        <ProjectButtons screenWidth={screenWidth} />
       </div>
     </Wrapper>
   );
-}
+};
 
 export default ProjectsPage;
