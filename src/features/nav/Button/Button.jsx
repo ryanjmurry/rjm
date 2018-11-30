@@ -22,7 +22,6 @@ const Wrapper = styled.div`
     text-align: center;
     text-transform: uppercase;
     line-height: 18px;
-    font-weight: 500;
   }
 
   .button p {
