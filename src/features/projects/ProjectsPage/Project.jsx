@@ -8,7 +8,7 @@ const ProjectBox = styled.div`
   width: 100%;
   position: relative;
   left: 0;
-  transition: 0.5s;
+  transition: 1s;
 
   @media (min-width: 768px) {
     width: 75vw;
@@ -38,7 +38,6 @@ const TechnologySection = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 125px;
-  // justify-content: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1em;
@@ -48,7 +47,7 @@ const TechnologySection = styled.div`
     margin-right: 10px;
   }
 
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     width: 300px;
   }
 `;
@@ -58,7 +57,6 @@ const ActiveBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  transition: 0.5s;
   height: 110px;
 
   h3 {
@@ -75,6 +73,7 @@ const ActiveBox = styled.div`
 
   p {
     color: #1c306d;
+    font-weight: 300;
   }
 `;
 
@@ -82,8 +81,8 @@ const TeamSoloTag = styled.div`
   position: absolute;
   top: 0;
   right: 15px;
-  font-family: 'Laila', serif;
-  color: #ffb75c;
+  font-family: 'Assistant', sans-serif;
+  color: #1c306d;
   font-weight: 600;
   font-size: 0.9em;
 `;
@@ -98,7 +97,7 @@ class Project extends Component {
     this.projectDeactivate();
   };
 
-  projectClick = () => {
+  projectActivate = () => {
     this.setState({
       boxBackgroundColor: '#fff',
       projectActive: true
@@ -124,20 +123,23 @@ class Project extends Component {
       liveSiteUrl,
       screenWidth
     } = this.props;
-    const teamOrSolo = teamProject ? 'team' : 'solo';
+    const teamOrSolo = teamProject ? 'team project' : 'solo project';
     const techDisplay =
       screenWidth < 768 ? (
         <span>{technologies[0]}</span>
       ) : (
         technologies.map((tech, index) => <span key={index}>{tech}</span>)
       );
-    
 
     return (
-      <ProjectBox onClick={this.projectClick} style={{ backgroundColor: boxBackgroundColor }}>
+      <ProjectBox
+        onClick={screenWidth < 768 ? this.projectActivate : ''}
+        onMouseEnter={screenWidth > 768 ? this.projectActivate : ''}
+        onMouseLeave={screenWidth > 768 ? this.projectDeactivate : ''}
+        style={{ backgroundColor: boxBackgroundColor }}
+      >
         {!projectActive && (
           <InactiveBox>
-            <TeamSoloTag>{teamOrSolo}</TeamSoloTag>
             <ProjectSection>
               <span>{projectName}</span>
             </ProjectSection>
@@ -147,6 +149,7 @@ class Project extends Component {
         )}
         {projectActive && (
           <ActiveBox>
+            {screenWidth > 768 && <TeamSoloTag>{teamOrSolo}</TeamSoloTag>}
             <p>{description}</p>
             {hosted ? (
               <h3>
