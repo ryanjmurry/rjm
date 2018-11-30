@@ -70,7 +70,8 @@ const IconText = styled.div`
   text-align: center;
   font-size: 0.9em;
   margin-top: 10px;
-  font-family: 'Laila', serif;
+  font-family: 'Assistant', sans-serif;
+  font-weight: 600;
 `;
 
 const iconStyles = {
