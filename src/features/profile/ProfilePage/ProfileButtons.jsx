@@ -18,7 +18,7 @@ const ProfileButtons = ({screenWidth}) => {
         <Link to="/skills">
           <Button buttonText="explore skills" />
         </Link>
-        <Link to="/profile">
+        <Link to="/projects">
           <Button buttonText="view projects" />
         </Link>
       </div>
