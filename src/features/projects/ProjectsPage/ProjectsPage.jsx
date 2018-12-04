@@ -38,7 +38,6 @@ const ProjectsPage = ({ screenWidth }) => {
   );
   return (
     <Wrapper>
-      {/* <h1 style={{margin: screenWidth > 768 ? '110px 0 0 0 ': '40px 0 0 0'}}><span>Projects</span></h1> */}
       {screenWidth > 768 ? desktopHeader : mobileHeader}
       {Object.keys(projects).map(key => (
         <Project
