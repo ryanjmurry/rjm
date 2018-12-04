@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { randomNumber } from '../../../app/helpers/helpers';
+import * as Visibility from 'visibilityjs';
 
 //------ styles start ------//
 
@@ -49,16 +50,16 @@ class Snow extends Component {
 
   loopThis = () => {
     const { circleArray } = this.state;
-    const circleInterval = setInterval(() => {
+    const circleInterval = Visibility.every(600, () => {
       if (circleArray.length > 60) {
-        clearInterval(circleInterval);
+        Visibility.stop(circleInterval);
         setTimeout(() => {
           this.clearCircleArray();
           this.loopThis();
         }, 8000);
       }
       this.createCircle();
-    }, 600);
+    });
   };
 
   createCircle = () => {
