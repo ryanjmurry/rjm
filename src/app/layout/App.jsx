@@ -84,7 +84,7 @@ class App extends Component {
     const { screenWidth } = this.state;
     return (
       <Wrapper>
-        <div style={{position: screenWidth > 768 ? 'fixed' : '', zIndex: '100'}}>
+        <div style={{ position: screenWidth > 768 ? 'fixed' : '', zIndex: '100' }}>
           <NavBar screenWidth={screenWidth} />
         </div>
         <div className="container">
@@ -94,9 +94,12 @@ class App extends Component {
                 <Switch location={location}>
                   <Route exact path="/home" render={() => <HomePage screenWidth={screenWidth} />} />
                   <Route exact path="/" render={() => <HomePage screenWidth={screenWidth} />} />
-                  <Route path="/profile" component={ProfilePage} />
-                  <Route path="/projects" render={() => <ProjectsPage screenWidth={screenWidth} />} />
-                  <Route path="/skills" component={SkillsPage} />
+                  <Route path="/profile" render={() => <ProfilePage screenWidth={screenWidth} />} />
+                  <Route
+                    path="/projects"
+                    render={() => <ProjectsPage screenWidth={screenWidth} />}
+                  />
+                  <Route path="/skills" render={() => <SkillsPage screenWidth={screenWidth} />} />
                 </Switch>
               </span>
             </CSSTransition>
