@@ -77,11 +77,6 @@ const ProfilePage = ({ screenWidth }) => {
           libraries, and frameworks such as C#, ES6, ASP.NET Core, Angular 6, and React.
         </p>
         <p>
-          I enjoy both front-end and back-end development. I take pride in designing client-side
-          solutions that are intuitive and easy to interact with, and also am very interested in
-          database design, management, and architecture.
-        </p>
-        <p>
           Browse some of my{' '}
           <Link className="project-link" to="/projects">
             work
