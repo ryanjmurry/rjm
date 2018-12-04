@@ -69,7 +69,7 @@ class Snow extends Component {
     const icon = (
       <FontAwesomeIcon
         className="float"
-        style={{ left: left, fontSize: fontSize, color: color }}
+        style={{ left: left, fontSize: fontSize, color: color, opacity: '0.5' }}
         icon="circle"
       />
     );
