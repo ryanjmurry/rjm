@@ -61,7 +61,8 @@ const Wrapper = styled.div`
 
 class App extends Component {
   state = {
-    screenWidth: 0
+    screenWidth: 0,
+    menuOpen: false
   };
 
   componentDidMount() {
@@ -79,13 +80,19 @@ class App extends Component {
     });
   };
 
+  menuClicked = () => {
+    this.setState({
+      menuOpen: !this.state.menuOpen
+    })
+  }
+
   render() {
     const { location } = this.props;
-    const { screenWidth } = this.state;
+    const { screenWidth, menuOpen } = this.state;
     return (
-      <Wrapper>
+      <Wrapper style={{overflow: menuOpen && screenWidth < 768 ? 'hidden' : ''}}>
         <div style={{ position: screenWidth > 768 ? 'fixed' : '', zIndex: '100' }}>
-          <NavBar screenWidth={screenWidth} />
+          <NavBar screenWidth={screenWidth} handleMenuClicked={this.menuClicked}/>
         </div>
         <div className="container">
           <TransitionGroup className="transition-group">

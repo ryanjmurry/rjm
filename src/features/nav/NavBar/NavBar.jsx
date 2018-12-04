@@ -18,10 +18,13 @@ class NavBar extends Component {
   };
 
   handleClickOutside = evt => {
-    this.closeMenu();
+    if (this.state.menuOpen) {
+      this.closeMenu();
+    }
   };
 
   openMenu = () => {
+    this.props.handleMenuClicked();
     this.setState({
       width: '185px',
       overlayWidth: '100%',
@@ -33,6 +36,7 @@ class NavBar extends Component {
   };
 
   closeMenu = () => {
+    this.props.handleMenuClicked();
     this.setState({
       width: '0',
       overlayWidth: '0',
