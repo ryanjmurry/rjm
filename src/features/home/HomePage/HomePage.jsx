@@ -32,7 +32,7 @@ const HomePageContainer = styled.div`
 const HomePage = ({screenWidth}) => {
   return (
     <div>
-      {/* <Snow /> */}
+      <Snow />
       <HomePageContainer>
         <Welcome screenWidth={screenWidth}/>
         <WelcomeButtons screenWidth={screenWidth}/>
