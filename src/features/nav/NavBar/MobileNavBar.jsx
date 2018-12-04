@@ -48,7 +48,6 @@ const OverlayContent = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 100px;
-  overflow: scroll;
 `;
 
 const IconCircles = styled.div`
