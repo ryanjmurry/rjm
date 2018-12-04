@@ -14,6 +14,10 @@ const ProjectBox = styled.div`
     width: 75vw;
     margin-left: -40px;
   }
+
+  @media (max-width: 768px) {
+    cursor: pointer;
+  }
 `;
 
 const InactiveBox = styled.div`
