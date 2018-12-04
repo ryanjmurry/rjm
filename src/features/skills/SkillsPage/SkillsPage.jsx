@@ -135,7 +135,7 @@ const SkillsPage = ({ screenWidth }) => {
           at managing and engaging team members, solving conflicts quickly and efficiently, and
           planning with short and long term goals in mind.
         </p>
-        <p>Below are a relevant technologies that I have experience with:</p>
+        <p>Below are relevant technologies that I have experience with:</p>
       </TextBox>
       <TechBox>
         {Object.keys(skills).map(key => (
