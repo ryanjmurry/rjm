@@ -146,3 +146,23 @@ export const projects = {
     technologies: ['React', 'JSX', 'Node.js']
   }
 };
+
+
+export const skills = {
+  languages: {
+    displayName: 'Languages',
+    listItems: ['C#', 'JavaScript (ES6)', 'HTML5', 'CSS3', 'SQL'],
+  },
+  frameworks: {
+    displayName: 'Frameworks & Libraries',
+    listItems: ['ASP.NET Core', 'Angular (5/6)', 'React (Redux)', 'Node.js', 'jQuery'],
+  },
+  databases: {
+    displayName: 'Databases & ORM',
+    listItems: ['MySQL', 'SQLServer', 'Entity Framework Core', 'Firebase', 'Firestore'],
+  },
+  additional: {
+    displayName: 'Additional',
+    listItems: ['Git', 'Webpack', 'Agile', 'TDD/BDD', 'Google APIs'],
+  }
+}
